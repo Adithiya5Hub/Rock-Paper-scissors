@@ -14,6 +14,34 @@ let score = JSON.parse(localStorage.getItem('score'))
           };
           
         }
+
+let isAutoPlaying = false;
+        let intervalId;
+
+        /**
+         * The function `autoPlay()` toggles between starting and stopping an automated game play.
+         */
+        function autoPlay() {
+          if (!isAutoPlaying) {
+          /* The line `intervalId = setInterval(function name() {` is setting up an interval that repeatedly
+          calls a function every 1000 milliseconds (1 second). The function being called is an anonymous
+          function that plays a round of Rock-Paper-Scissors against the computer. The `setInterval` function
+          returns an interval ID, which is stored in the `intervalId` variable. This ID can be used later to
+          stop the interval using the `clearInterval` function. */
+          intervalId = setInterval(function name() {
+              const playerMove = pickComputerMove();
+              playGame(playerMove);
+            },1000)
+            isAutoPlaying = true;
+            document.querySelector('.auto-play-button').innerHTML = "Stop Play"
+            
+          } else {
+            clearInterval(intervalId);
+            isAutoPlaying = false;
+            document.querySelector('.auto-play-button').innerHTML = "Auto Play"
+          }
+          
+        }
       /* The `playGame` function takes in the player's move as a parameter and plays a round of
       Rock-Paper-Scissors against the computer. It generates a random move for the computer using
       the `pickComputerMove` function and determines the result of the game based on the player's
