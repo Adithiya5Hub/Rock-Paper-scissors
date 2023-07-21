@@ -33,7 +33,7 @@ button{
 .score{
  margin-top: 60px
 }
-.reset-score-button{
+.reset-score-button, .auto-play-button{
     background-color:white;
     border: none;
     padding: 8px 10px;
